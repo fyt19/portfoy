@@ -23,4 +23,45 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Sticky animasyonunun düzgün çalışması için yatay taşmayı gizle */
+  overflow-x: hidden; 
+}
+
+/* --- ÖZEL EFEKTLER --- */
+
+/* 1. KOD İLE CSS GRID DESENİ (Resimsiz) */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  /* Burada rengi '128, 128, 128' (Gri) yaptık.
+     Böylece hem Siyah hem Beyaz arka planda hafifçe görünür.
+  */
+  background-image: 
+    linear-gradient(to right, rgba(128, 128, 128, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.1) 1px, transparent 1px);
+    
+  /* Kenarlara doğru yumuşakça kaybolması için maske */
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 80%);
+}
+
+/* 2. RGB AKAN YAZI EFEKTİ */
+@keyframes animatedgradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 300%;
+  animation: animatedgradient 4s ease infinite alternate;
+}
+
+/* 3. DİĞER ANİMASYONLAR */
+.animate-text {
+    background-size: 200% auto;
+    animation: textShine 5s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+    to { background-position: 200% center; }
 }
